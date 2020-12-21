@@ -41,8 +41,7 @@
 }
 
 .postHeader .postHeaderTitle {
-    font-size: 51px;
-    font-family: 'Lobster',cursive;
+    font-size: 45px;
 }
 
 .mainContainer .index {
@@ -69,10 +68,6 @@
 .buttonWrapper {
   margin-bottom: 5px;
 }
-
-
-
-
 
 a {
   color: #29A4D6;
