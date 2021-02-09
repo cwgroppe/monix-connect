@@ -33,10 +33,10 @@ lazy val sharedSettings = Seq(
     "-language:experimental.macros"
   ),
   //warnUnusedImports
-  scalacOptions in (Compile, console) ++= Seq("-Ywarn-unused:imports"),
+//  scalacOptions in (Compile, console) ++= Seq("-Ywarn-unused:imports"),
     // Linter
   scalacOptions ++= Seq(
-    "-Ywarn-unused:imports", // Warn if an import selector is not referenced.
+//    "-Ywarn-unused:imports", // Warn if an import selector is not referenced.
     "-Ywarn-dead-code", // Warn when dead code is identified.
     // Turns all warnings into errors ;-)
     //temporary disabled for mongodb warn, -YWarn (2.13) and Silencer (2.12) should fix it...
@@ -123,8 +123,8 @@ lazy val monixConnect = (project in file("."))
   .configs(IntegrationTest, IT)
   .settings(sharedSettings)
   .settings(name := "monix-connect")
-  .aggregate(akka, dynamodb, parquet, gcs, hdfs, mongodb, redis, s3, elasticsearch, awsAuth)
-  .dependsOn(akka, dynamodb, parquet, gcs, hdfs, mongodb, redis, s3, elasticsearch, awsAuth)
+  .aggregate(akka, dynamodb, parquet, gcs, hdfs, mongodb, redis, s3, elasticsearch, awsAuth, secretsmanager)
+  .dependsOn(akka, dynamodb, parquet, gcs, hdfs, mongodb, redis, s3, elasticsearch, awsAuth, secretsmanager)
 
 lazy val akka = monixConnector("akka", Dependencies.Akka)
 
@@ -139,6 +139,8 @@ lazy val parquet = monixConnector("parquet", Dependencies.Parquet)
 lazy val redis = monixConnector("redis", Dependencies.Redis)
 
 lazy val s3 = monixConnector("s3", Dependencies.S3).aggregate(awsAuth).dependsOn(awsAuth % "compile->compile;test->test")
+
+lazy val secretsmanager = monixConnector("secretsmanager", Dependencies.SecretsManager).aggregate(awsAuth).dependsOn(awsAuth % "compile->compile;test->test")
 
 lazy val gcs = monixConnector("gcs", Dependencies.GCS)
 

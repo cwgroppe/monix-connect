@@ -15,6 +15,7 @@ object Dependencies {
     val MongoScala = "4.1.1"
     val MongoReactiveStreams = "4.1.1"
     val S3 = "2.14.21"
+    val SecretsManager = "2.15.77"
     val Parquet = "1.11.1"
     val Pureconfig = "0.14.0"
     val Elastic4s = "7.10.2"
@@ -83,6 +84,12 @@ object Dependencies {
   "org.scalatestplus" %% "scalacheck-1-14" % "3.1.4.0" % Test
   ) ++ commonDependencies(hasIt = true)
 
+  val SecretsManager = Seq(
+    "software.amazon.awssdk" % "secretsmanager" % Versions.AwsSdk,
+    "org.scala-lang.modules" %% "scala-collection-compat" % Versions.ScalaCompat,
+  "org.scalatestplus" %% "scalacheck-1-14" % "3.1.4.0" % Test
+  ) ++ commonDependencies(hasIt = true)
+  
   val Redis = Seq(
     "io.lettuce" % "lettuce-core" % "5.1.8.RELEASE",
     "org.scala-lang.modules" %% "scala-collection-compat" % Versions.ScalaCompat

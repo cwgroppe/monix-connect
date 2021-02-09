@@ -1,0 +1,8 @@
+{
+  "host" : "ProdServer-01.databases.example.com",
+  "port" : "8888",
+  "username"   : "administrator",
+  "password"   : "My-P@ssw0rd!F0r+Th3_Acc0unt",
+  "dbname"     : "MyDatabase",
+  "engine"     : "mysql"
+}

@@ -34,6 +34,17 @@ services:
       - '4569:4569'
     environment:
       - SERVICES=dynamodb
+ 
+  localstack_secrets_manager:
+    image: localstack/localstack:0.11.1
+    ports:
+      - '4584:4584'
+    environment:
+      - SERVICES=secretsmanager
+      - DATA_DIR=/tmp/localstack/data
+      - AWS_ACCESS_KEY_ID=foobar
+      - AWS_SECRET_ACCESS_KEY=foobar
+      - DEFAULT_REGION=us-east-2
 
   redis:
     image: redis
